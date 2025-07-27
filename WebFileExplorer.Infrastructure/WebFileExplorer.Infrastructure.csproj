@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\WebFileExplorer.Application\WebFileExplorer.Application.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFileExplorer.Application
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFileExplorer.SharedKernel", "WebFileExplorer.SharedKernel\WebFileExplorer.SharedKernel.csproj", "{5EBFE95E-D907-46DB-9761-79EFD49D633C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{641AD7AD-C468-48A3-9A57-C998151C874D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
