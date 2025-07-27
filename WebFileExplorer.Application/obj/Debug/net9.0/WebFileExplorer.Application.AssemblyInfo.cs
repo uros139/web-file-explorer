@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebFileExplorer.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dab9d3340bd8b0a2d55d3f75c9af8d928795e659")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+14e5cf251186eaaddbb4aa3f06610dae13c49403")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebFileExplorer.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebFileExplorer.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
