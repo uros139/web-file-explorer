@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "8hu5Rprlxc7SmLILxxy13ZkYLfH+ckK2y/W/1UTMvdU=",
+  "Source": "WebFileExplorer.Api",
+  "BasePath": "_content/WebFileExplorer.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
