@@ -1,12 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <ItemGroup>
-      <Folder Include="Files\" />
-      <Folder Include="Folders\" />
+      <Compile Remove="Files\**" />
+      <Compile Remove="Folders\**" />
+      <EmbeddedResource Remove="Files\**" />
+      <EmbeddedResource Remove="Folders\**" />
+      <None Remove="Files\**" />
+      <None Remove="Folders\**" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.EntityFrameworkCore"/>
+      <Folder Include="Features\Folders\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" />
+      <PackageReference Include="MediatR" />
+      <PackageReference Include="Microsoft.AspNetCore.Http.Features" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" />
     </ItemGroup>
 
     <ItemGroup>
