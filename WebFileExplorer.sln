@@ -1,5 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.36105.23 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFileExplorer.Api", "WebFileExplorer.Api\WebFileExplorer.Api.csproj", "{F8549ED3-5D28-4B86-A9B3-2C8580902009}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFileExplorer.Domain", "WebFileExplorer.Domain\WebFileExplorer.Domain.csproj", "{E3409EAF-1997-4F9D-9537-5C25C2B0E4E5}"
@@ -11,6 +14,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFileExplorer.SharedKernel", "WebFileExplorer.SharedKernel\WebFileExplorer.SharedKernel.csproj", "{5EBFE95E-D907-46DB-9761-79EFD49D633C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{641AD7AD-C468-48A3-9A57-C998151C874D}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,5 +45,11 @@ Global
 		{5EBFE95E-D907-46DB-9761-79EFD49D633C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EBFE95E-D907-46DB-9761-79EFD49D633C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EBFE95E-D907-46DB-9761-79EFD49D633C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B167A2AB-24C2-4DCE-8DB6-9D1DFB6A93D1}
 	EndGlobalSection
 EndGlobal
