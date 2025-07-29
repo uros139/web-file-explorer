@@ -54,7 +54,7 @@ public class FilesController(IMediator mediator) : Controller
             return result.ToActionResult();
 
         var fileContent = result.Value;
-        return File(fileContent.Data, fileContent.ContentType, fileContent.FileName);
+        return File(fileContent.Data ?? [], fileContent.ContentType, fileContent.FileName);
     }
 
     [HttpGet("{id}/thumbnail")]

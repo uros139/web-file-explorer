@@ -1,9 +1,11 @@
 using WebFileExplorer.Api;
+using WebFileExplorer.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
-    .AddPresentation();
+    .AddPresentation()
+    .AddApplication();
 
 var app = builder.Build();
 
