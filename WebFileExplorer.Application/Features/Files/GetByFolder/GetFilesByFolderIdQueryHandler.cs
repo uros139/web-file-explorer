@@ -2,7 +2,6 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using WebFileExplorer.Application.Abstractions.Data;
-using WebFileExplorer.SharedKernel.Exceptions;
 using File = WebFileExplorer.Domain.Files.File;
 
 namespace WebFileExplorer.Application.Features.Files.GetByFolder;

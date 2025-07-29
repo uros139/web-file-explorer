@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using WebFileExplorer.Application.Abstractions.Data;
-using WebFileExplorer.SharedKernel;
 using WebFileExplorer.SharedKernel.Api;
 using File = WebFileExplorer.Domain.Files.File;
 

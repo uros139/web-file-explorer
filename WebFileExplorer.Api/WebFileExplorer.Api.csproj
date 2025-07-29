@@ -7,10 +7,6 @@
 	</ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\Folders\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\WebFileExplorer.Application\WebFileExplorer.Application.csproj" />
     </ItemGroup>
 

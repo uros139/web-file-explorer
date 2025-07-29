@@ -10,10 +10,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Features\Folders\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <PackageReference Include="AutoMapper" />
       <PackageReference Include="MediatR" />
       <PackageReference Include="Microsoft.AspNetCore.Http.Features" />

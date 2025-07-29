@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using WebFileExplorer.Application.Features.Files;
 using WebFileExplorer.Application.Features.Files.Upload;
 using WebFileExplorer.Api.Extensions;
@@ -17,7 +16,6 @@ using WebFileExplorer.Application.Features.Files.Get;
 namespace WebFileExplorer.Api.Controllers.Files;
 
 [Route("api/[controller]")]
-[Authorize]
 public class FilesController(IMediator mediator) : Controller
 {
     [HttpGet]
@@ -86,41 +84,32 @@ public class FilesController(IMediator mediator) : Controller
         return CreatedAtAction(nameof(GetById), new { id = result.Value.Id }, result.Value);
     }
 
-    [HttpPut("{id}")]
+    [HttpPut]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<FileResponse>> Update(Guid id, [FromBody] UpdateFileCommand command, CancellationToken cancellationToken)
+    public async Task<ActionResult<FileResponse>> Update([FromBody] UpdateFileCommand command, CancellationToken cancellationToken)
     {
-        if (id != command.Id)
-            return BadRequest("Id mismatch between route and body");
-
         var result = await mediator.Send(command, cancellationToken);
         return result.ToActionResult();
     }
 
-    [HttpPatch("{id}/rename")]
+    [HttpPatch("rename")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<FileResponse>> Rename(Guid id, [FromBody] RenameFileCommand command, CancellationToken cancellationToken)
+    public async Task<ActionResult<FileResponse>> Rename([FromBody] RenameFileCommand command, CancellationToken cancellationToken)
     {
-        if (id != command.Id)
-            return BadRequest("Id mismatch between route and body");
-
         var result = await mediator.Send(command, cancellationToken);
         return result.ToActionResult();
     }
 
-    [HttpPatch("{id}/move")]
+    [HttpPatch("move")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<FileResponse>> Move(Guid id, [FromBody] MoveFileCommand command, CancellationToken cancellationToken)
+    public async Task<ActionResult<FileResponse>> Move([FromBody] MoveFileCommand command, CancellationToken cancellationToken)
     {
-        if (id != command.Id)
-            return BadRequest("Id mismatch between route and body");
-
         var result = await mediator.Send(command, cancellationToken);
         return result.ToActionResult();
     }
@@ -131,6 +120,6 @@ public class FilesController(IMediator mediator) : Controller
     public async Task<ActionResult> Delete(Guid id, CancellationToken cancellationToken)
     {
         await mediator.Send(new DeleteFileCommand(id), cancellationToken);
-        return Ok();
+        return NoContent();
     }
 }
