@@ -13,9 +13,6 @@ internal sealed class UploadFileCommandHandler(
 {
     public async Task<Result<FileResponse>> Handle(UploadFileCommand request, CancellationToken cancellationToken)
     {
-        if (request.File == null || request.File.Length == 0)
-            return Result<FileResponse>.Failure("File is required and cannot be empty.");
-
         using var stream = request.File.OpenReadStream();
         var fileContent = new byte[request.File.Length];
         await stream.ReadExactlyAsync(fileContent, cancellationToken);
