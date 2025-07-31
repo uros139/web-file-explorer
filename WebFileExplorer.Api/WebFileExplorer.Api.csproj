@@ -3,11 +3,16 @@
     <ItemGroup>
         <PackageReference Include="MediatR" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
 		<PackageReference Include="Swashbuckle.AspNetCore" />
 	</ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\WebFileExplorer.Application\WebFileExplorer.Application.csproj" />
+      <ProjectReference Include="..\WebFileExplorer.Infrastructure\WebFileExplorer.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

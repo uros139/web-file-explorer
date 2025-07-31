@@ -23,7 +23,6 @@ internal sealed class RenameFileCommandHandler(
             throw new NotFoundException($"File with ID {request.Id} not found.");
 
         file.Name = request.NewName;
-        file.ModifiedAt = DateTime.UtcNow;
 
         await fileRepository.SaveChangesAsync(cancellationToken);
 

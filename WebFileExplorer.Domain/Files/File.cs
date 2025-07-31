@@ -10,12 +10,9 @@ public class File : Entity
     public Folder Folder { get; set; } = null!;
     public long SizeInBytes { get; set; }
     public string MimeType { get; set; } = string.Empty;
-    public string StoragePath { get; set; } = string.Empty;
-    public byte[]? FileContent { get; set; }
+    public byte[] FileContent { get; set; } = null!;
     public byte[]? ThumbnailData { get; set; }
     public string? TextContent { get; set; }
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-    public DateTime ModifiedAt { get; set; } = DateTime.UtcNow;
 
     public void Update(string name, string? textContent = null)
     {
@@ -24,12 +21,10 @@ public class File : Entity
         {
             TextContent = textContent;
         }
-        ModifiedAt = DateTime.UtcNow;
     }
 
     public void Move(Guid newFolderId)
     {
         FolderId = newFolderId;
-        ModifiedAt = DateTime.UtcNow;
     }
 }
