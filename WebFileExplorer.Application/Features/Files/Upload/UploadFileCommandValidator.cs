@@ -15,7 +15,7 @@ public class UploadFileCommandValidator : AbstractValidator<UploadFileCommand>
         RuleFor(x => x.File)
             .NotNull()
             .WithMessage("File cannot be null.")
-            .Must(file => file.Length > 0)
+            .Must(file => file?.Length > 0)
             .WithMessage("File cannot be empty.");
 
         RuleFor(x => x.FolderId)

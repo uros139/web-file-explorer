@@ -1,8 +1,11 @@
+using Serilog;
 using WebFileExplorer.Api;
 using WebFileExplorer.Application;
 using WebFileExplorer.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((context, loggerConfig) => loggerConfig.ReadFrom.Configuration(context.Configuration));
 
 builder.Services
     .AddPresentation()
@@ -24,6 +27,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseSerilogRequestLogging();
+
 app.MapControllers();
 
 app.Run();
