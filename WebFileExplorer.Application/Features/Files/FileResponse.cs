@@ -5,7 +5,5 @@ public record FileResponse(
     string Name,
     Guid FolderId,
     long SizeInBytes,
-    string MimeType,
-    DateTime CreatedAt,
-    DateTime ModifiedAt
+    string MimeType
 );

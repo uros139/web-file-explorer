@@ -15,7 +15,7 @@ public class Result<T>
     }
 
     public static Result<T> Success(T value) => new(value, true, string.Empty);
-    public static Result<T> Failure(string error) => new(default, false, error);
+    public static Result<T> Failure(string error) => new(default!, false, error);
 }
 public class Result
 {

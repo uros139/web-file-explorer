@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebFileExplorer.Application.Abstractions.Data;
 using WebFileExplorer.Domain.Folders;
+using WebFileExplorer.Infrastructure.Database.Seeding;
 using File = WebFileExplorer.Domain.Files.File;
 
 namespace WebFileExplorer.Infrastructure.Database;
@@ -16,5 +17,8 @@ public sealed class ApplicationDbContext(
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         base.OnModelCreating(modelBuilder);
+
+        FolderSeed.Seed(modelBuilder);
+        FilesSeed.Seed(modelBuilder);
     }
 }

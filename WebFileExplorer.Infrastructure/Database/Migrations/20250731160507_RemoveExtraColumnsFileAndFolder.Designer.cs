@@ -9,109 +9,108 @@ using WebFileExplorer.Infrastructure.Database;
 
 #nullable disable
 
-namespace WebFileExplorer.Infrastructure.Migrations
+namespace WebFileExplorer.Infrastructure.Migrations;
+
+[DbContext(typeof(ApplicationDbContext))]
+[Migration("20250731160507_RemoveExtraColumnsFileAndFolder")]
+partial class RemoveExtraColumnsFileAndFolder
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250731160507_RemoveExtraColumnsFileAndFolder")]
-    partial class RemoveExtraColumnsFileAndFolder
+    /// <inheritdoc />
+    protected override void BuildTargetModel(ModelBuilder modelBuilder)
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
-        {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.7")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+        modelBuilder
+            .HasAnnotation("ProductVersion", "9.0.7")
+            .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+        NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("WebFileExplorer.Domain.Files.File", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+        modelBuilder.Entity("WebFileExplorer.Domain.Files.File", b =>
+            {
+                b.Property<Guid>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("uuid");
 
-                    b.Property<byte[]>("FileContent")
-                        .IsRequired()
-                        .HasColumnType("bytea");
+                b.Property<byte[]>("FileContent")
+                    .IsRequired()
+                    .HasColumnType("bytea");
 
-                    b.Property<Guid>("FolderId")
-                        .HasColumnType("uuid");
+                b.Property<Guid>("FolderId")
+                    .HasColumnType("uuid");
 
-                    b.Property<string>("MimeType")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)");
+                b.Property<string>("MimeType")
+                    .IsRequired()
+                    .HasMaxLength(255)
+                    .HasColumnType("character varying(255)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)");
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasMaxLength(255)
+                    .HasColumnType("character varying(255)");
 
-                    b.Property<long>("SizeInBytes")
-                        .HasColumnType("bigint");
+                b.Property<long>("SizeInBytes")
+                    .HasColumnType("bigint");
 
-                    b.Property<string>("TextContent")
-                        .HasColumnType("text");
+                b.Property<string>("TextContent")
+                    .HasColumnType("text");
 
-                    b.Property<byte[]>("ThumbnailData")
-                        .HasColumnType("bytea");
+                b.Property<byte[]>("ThumbnailData")
+                    .HasColumnType("bytea");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("FolderId");
+                b.HasIndex("FolderId");
 
-                    b.ToTable("Files");
-                });
+                b.ToTable("Files");
+            });
 
-            modelBuilder.Entity("WebFileExplorer.Domain.Folders.Folder", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+        modelBuilder.Entity("WebFileExplorer.Domain.Folders.Folder", b =>
+            {
+                b.Property<Guid>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("uuid");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)");
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasMaxLength(255)
+                    .HasColumnType("character varying(255)");
 
-                    b.Property<Guid?>("ParentId")
-                        .HasColumnType("uuid");
+                b.Property<Guid?>("ParentId")
+                    .HasColumnType("uuid");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("ParentId");
+                b.HasIndex("ParentId");
 
-                    b.ToTable("Folders");
-                });
+                b.ToTable("Folders");
+            });
 
-            modelBuilder.Entity("WebFileExplorer.Domain.Files.File", b =>
-                {
-                    b.HasOne("WebFileExplorer.Domain.Folders.Folder", "Folder")
-                        .WithMany("Files")
-                        .HasForeignKey("FolderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+        modelBuilder.Entity("WebFileExplorer.Domain.Files.File", b =>
+            {
+                b.HasOne("WebFileExplorer.Domain.Folders.Folder", "Folder")
+                    .WithMany("Files")
+                    .HasForeignKey("FolderId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("Folder");
-                });
+                b.Navigation("Folder");
+            });
 
-            modelBuilder.Entity("WebFileExplorer.Domain.Folders.Folder", b =>
-                {
-                    b.HasOne("WebFileExplorer.Domain.Folders.Folder", "Parent")
-                        .WithMany("Subfolders")
-                        .HasForeignKey("ParentId");
+        modelBuilder.Entity("WebFileExplorer.Domain.Folders.Folder", b =>
+            {
+                b.HasOne("WebFileExplorer.Domain.Folders.Folder", "Parent")
+                    .WithMany("Subfolders")
+                    .HasForeignKey("ParentId");
 
-                    b.Navigation("Parent");
-                });
+                b.Navigation("Parent");
+            });
 
-            modelBuilder.Entity("WebFileExplorer.Domain.Folders.Folder", b =>
-                {
-                    b.Navigation("Files");
+        modelBuilder.Entity("WebFileExplorer.Domain.Folders.Folder", b =>
+            {
+                b.Navigation("Files");
 
-                    b.Navigation("Subfolders");
-                });
+                b.Navigation("Subfolders");
+            });
 #pragma warning restore 612, 618
-        }
     }
 }

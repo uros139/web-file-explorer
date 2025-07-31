@@ -1,4 +1,7 @@
-﻿namespace WebFileExplorer.Api;
+﻿using WebFileExplorer.Api.Infrastructure;
+using WebFileExplorer.Api.Infrastructure.ExceptionHandling;
+
+namespace WebFileExplorer.Api;
 
 public static class DependencyInjection
 {
@@ -18,6 +21,14 @@ public static class DependencyInjection
         services.AddSwaggerGen();
 
         services.AddControllers();
+
+        services.Scan(scan => scan
+            .FromAssemblyOf<IExceptionHandlerStrategy>()
+            .AddClasses(classes => classes.AssignableTo<IExceptionHandlerStrategy>())
+            .AsImplementedInterfaces()
+            .WithTransientLifetime());
+
+        services.AddExceptionHandler<GlobalExceptionHandler>();
 
         services.AddProblemDetails();
 

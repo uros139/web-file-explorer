@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebFileExplorer.Api.Extensions;
 using WebFileExplorer.Application.Features.Folders;
@@ -18,7 +17,6 @@ using WebFileExplorer.Application.Features.Folders.Update;
 namespace WebFileExplorer.Api.Controllers.Folders;
 
 [Route("api/[controller]")]
-[Authorize]
 public class FoldersController(IMediator mediator) : Controller
 {
     [HttpGet]
